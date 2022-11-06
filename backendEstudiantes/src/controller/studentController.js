@@ -1,8 +1,10 @@
 const stundentCtrl = {};
 const Student = require("../models/studentModel");
 
+//listar estudiantes:
+
 stundentCtrl.getAllStudents = async (req, res) => {
-  const doc = await Student.find();
+  const doc = await Student.find().populate("courses").populate("courses");
   res.status(200).json({
     status: "Success",
     results: doc.length,
@@ -26,12 +28,12 @@ stundentCtrl.createStudent = async (req, res) => {
 //listar por ID
 stundentCtrl.getStudentById = async (req, res, next) => {
   const id = req.params.id;
-  const data = await Student.findById({ _id: id });
+  const data = await Student.findById({ _id: id }).populate("courses");
   if (!data) {
     return next("error");
   }
   res.status(200).json({
-    mensaje: "success",
+    status: "success",
     response: {
       data: data,
     },
@@ -41,7 +43,6 @@ stundentCtrl.getStudentById = async (req, res, next) => {
 //actualizar estudiante:
 stundentCtrl.updateStudent = async (req, res) => {
   const id = req.params.id;
-
   const doc = await Student.findByIdAndUpdate({ _id: id }, req.body);
   res.status(200).json({
     status: "success",

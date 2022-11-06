@@ -15,7 +15,12 @@ const studentSchema = new Schema({
   },
   status: { type: Boolean, default: true },
   geolocation: String,
-  courses: [{ type: Schema.Types.ObjectId, ref: "courses" }],
+  courses: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
 });
 
 const Student = mongoose.model("Student", studentSchema);
