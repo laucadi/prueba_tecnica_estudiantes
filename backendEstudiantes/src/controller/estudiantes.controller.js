@@ -1,5 +1,5 @@
 const estudiantesCtrl = {};
-const estudiantesModel = require("../models/estudiantes.model");
+const estudiantesModel = require("../models/studentModel");
 
 //crear estudiantes:
 
@@ -44,7 +44,7 @@ estudiantesCtrl.listarporcurso = async (req, res, next) => {
   const id = req.params.id;
   const cursos = await estudiantesModel
     .findById({ _id: id })
-    .populate("cursos");
+    .populate("courses");
   if (!cursos) {
     return next("error");
   }

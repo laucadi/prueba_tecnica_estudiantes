@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 //URL = "mongodb://localhost/estudiantes";
 URL =
-  "mongodb+srv://lauCaicedo:1234@cluster0.k3s6gj0.mongodb.net/estudianteDB?retryWrites=true&w=majority";
+  "mongodb+srv://lauCaicedo:1234@cluster0.k3s6gj0.mongodb.net/studentBD?retryWrites=true&w=majority";
 mongoose
   .connect(URL, {
     useNewUrlParser: true,

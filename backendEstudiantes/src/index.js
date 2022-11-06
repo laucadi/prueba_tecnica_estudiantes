@@ -3,6 +3,8 @@ const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const studentRouter = require("./routes/studentRoutes");
+const courseRouter = require("./routes/courseRoutes");
 
 require("./database");
 
@@ -17,6 +19,6 @@ app.listen(port, function () {
   console.log("La aplicación esta escuchando en el puerto " + port);
 });
 
-app.use("/estudiantes", require("./routes/estudiantes.route"));
-app.use("/cursos", require("./routes/cursos.route"));
-app.use("/cursosPorEstudiante", require("./routes/cursoPorEstudiante.route"));
+//routes
+app.use("/api/v1/students", studentRouter);
+app.use("/api/v1/courses", courseRouter);
