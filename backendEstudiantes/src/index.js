@@ -18,6 +18,5 @@ app.listen(port, function () {
 });
 
 app.use("/estudiantes", require("./routes/estudiantes.route"));
-
 app.use("/cursos", require("./routes/cursos.route"));
 app.use("/cursosPorEstudiante", require("./routes/cursoPorEstudiante.route"));

@@ -10,6 +10,7 @@ router.get(
   "/listarCursoEstudiante",
   cursoPorEstudianteCtrl.listarcursPorEstudiante
 );
+router.get("/listarPorEstudiante/:id", cursoPorEstudianteCtrl.listardetalle);
 router.delete(
   "/eliminarCursoEstudiante/:id",
   cursoPorEstudianteCtrl.eliminarcursoPorEstudiante

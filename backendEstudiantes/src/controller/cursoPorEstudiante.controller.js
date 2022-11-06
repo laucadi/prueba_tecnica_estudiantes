@@ -23,6 +23,12 @@ cursosPorEstudianteCtrl.crearCursoPorEstudiante = async (req, res) => {
     });
   }
 };
+//listar por id
+cursosPorEstudianteCtrl.listardetalle = async (req, res) => {
+  const id = req.params.id;
+  const respuesta = await cursosPorEstudianteModel.find({ estudiante: id });
+  res.json(respuesta);
+};
 
 //listar los cursos añadidos a  estudiante:
 cursosPorEstudianteCtrl.listarcursPorEstudiante = async (req, res) => {

@@ -12,6 +12,7 @@ estudiantesCtrl.crear = async (req, res) => {
     correo,
     activo,
     ubicacionGeografica,
+    cursos,
   } = req.body;
   const nuevoEstudiante = new estudiantesModel({
     nombres,
@@ -21,6 +22,7 @@ estudiantesCtrl.crear = async (req, res) => {
     correo,
     activo,
     ubicacionGeografica,
+    cursos,
   });
   const rsta = await nuevoEstudiante.save();
   res.json({
@@ -37,13 +39,31 @@ estudiantesCtrl.listarEstudiante = async (req, res) => {
     respuesta,
   });
 };
+//listar cursos de estudiantes:
+estudiantesCtrl.listarporcurso = async (req, res, next) => {
+  const id = req.params.id;
+  const cursos = await estudiantesModel
+    .findById({ _id: id })
+    .populate("cursos");
+  if (!cursos) {
+    return next("error");
+  }
+  res.status(200).json({
+    mensaje: "success",
+    cursos,
+  });
+};
 
 //actualizar estudiantes:
-estudiantesCtrl.actualizarUsuario = async (req, res) => {
+estudiantesCtrl.actualizarEstudiante = async (req, res) => {
   const id = req.params.id;
-  await usuariosModels.findByIdAndUpdate({ _id: id }, req.body);
-  const respuesta = await estudiantesModel.findById({ _id: id });
-  res.json({
+
+  const respuesta = await estudiantesModel.findByIdAndUpdate(
+    { _id: id },
+    req.body
+  );
+  console.log(respuesta);
+  res.status(200).json({
     mensaje: "estudiante actualizado",
     respuesta,
   });
