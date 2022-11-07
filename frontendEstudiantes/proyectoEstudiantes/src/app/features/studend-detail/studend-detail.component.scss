@@ -1,0 +1,33 @@
+.background {
+  background-color: #f3f4fe;
+  h1 {
+    color: #4d44b5;
+    font-weight: bolder;
+  }
+
+  .tableStudent {
+    padding-bottom: 30px;
+    .header {
+      background-color: #4d44b5;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+  }
+  .containerForm {
+    background-color: #ffff;
+    form {
+      background-color: #ffff;
+      label {
+        color: #4d44b5;
+        font-weight: bold;
+      }
+      span {
+        font-weight: 200;
+      }
+      button {
+        background-color: #4d44b5;
+        color: #f3f4fe;
+      }
+    }
+  }
+}

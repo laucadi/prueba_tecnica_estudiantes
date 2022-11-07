@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th scope="col">Nombre y Apellido</th>
+                <th scope="col">Grado</th>
+                <th scope="col">cursos</th>
+                <th scope="col">acciones</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let estudiante of students; let index = index">
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                            <p class="fw-bold mb-1">{{estudiante.name}} {{estudiante.lastName}}</p>
+                            <p class="text-muted mb-0">{{estudiante.email}}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1">{{estudiante.grade}}</p>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="ms-3" *ngFor="let course of estudiante.courses">
+                            <span class="badge rounded-pill bg-primary">{{course.name}}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link btn-sm btn-rounded"
+                        [routerLink]="'./edit/'+ estudiante._id">
+                        Editar
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<!-- <pre>
+    {{students |json}}
+</pre> -->
